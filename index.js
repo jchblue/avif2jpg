@@ -7,8 +7,9 @@ const app = express();
 app.get('/', async (req, res) => {
   const encodedUrl = req.query.url;
 
+  // ✅ url 파라미터 없으면 상태 확인 메시지
   if (!encodedUrl) {
-    return res.status(400).send('Missing url parameter');
+    return res.status(200).send('동작중입니다.');
   }
 
   try {
@@ -45,6 +46,7 @@ app.get('/', async (req, res) => {
   }
 });
 
+// 포트 설정 (Render는 자동 할당, 로컬은 3000)
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
